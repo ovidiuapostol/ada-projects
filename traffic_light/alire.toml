@@ -1,0 +1,11 @@
+name = "traffic_light"
+description = ""
+version = "0.1.0-dev"
+
+authors = ["Your Name"]
+maintainers = ["Your Name <example@example.com>"]
+licenses = "MIT"
+website = ""
+tags = []
+
+executables = ["traffic_light"]
