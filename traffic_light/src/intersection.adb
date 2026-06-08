@@ -1,13 +1,16 @@
+-------------------------------------------------------------------
 --  intersection.adb
 --  Package: Intersection
 --  Purpose: Traffic light controller (state-machine + timing)
 --  Author : Ovi
+-------------------------------------------------------------------
 package body Intersection is
 
    protected body Intersection_Controller is
-
+      ------------------------------------------------------------------
       --  Return the color of the North-South traffic line based on the
       --  on the current state of the finite-state-machine
+      ------------------------------------------------------------------
       function NS_Color return Color is
       begin
          case Current_State is
@@ -17,8 +20,10 @@ package body Intersection is
          end case;
       end NS_Color;
 
+      -------------------------------------------------------------------
       --  Return the color of the North-South traffic line based on the
       --  on the current state of the finite-state-machine
+      ------------------------------------------------------------------
       function EW_Color return Color is
       begin
          case Current_State is
@@ -28,19 +33,22 @@ package body Intersection is
          end case;
       end EW_Color;
 
+      -----------------------------------------------------------------
       --  Indicate whether the controller has reached the configured
       --  runtime limit and should stop execution.
+      -----------------------------------------------------------------
       function Should_Stop return Boolean is
       begin
          return Stop_Flag;
       end Should_Stop;
-
+      -------------------------------------------------------------------
       --  Advance the controller by one tick. This:
       --    * increments time spent in the current state
       --    * increments total runtime
       --    * checks whether runtime has expired
       --    * performs a state transition when the state's duration ends
       --  Called by Cyclic_Task_1s task
+      -------------------------------------------------------------------
       procedure Tick is
 
          --  Cached state information for the current state:

@@ -1,7 +1,9 @@
+--------------------------------------------------------------------------
 --  intersection.ads
 --  Package: Intersection
 --  Purpose: Traffic light controller (state-machine + timing)
 --  Author : Ovi
+-------------------------------------------------------------------------
 package Intersection is
 
    --  Traffic light colors used by both directions.
@@ -25,7 +27,7 @@ package Intersection is
    Green_Duration     : constant Natural := 6;
    Yellow_Duration    : constant Natural := 3;
    All_Red_Duration   : constant Natural := 2;
-   Run_Duration       : constant Integer := 60;
+   Run_Duration       : constant Integer := 30;
 
    --  Transition table for the finite-state-machine. Each state maps to
    --  its duration and the next state to enter when the duration ends.
@@ -43,9 +45,10 @@ package Intersection is
    --  directions. It also tracks the total run time and detect when the
    --  configured runtime has elapsed
    protected Intersection_Controller is
-
+      ---------------------------------------------------------------
       --  Advance the controller by one tick. This may triger
       --  a state transition and increments the runtime counters
+      ---------------------------------------------------------------
       procedure Tick;
 
       --  Current collor of the North-South direction
